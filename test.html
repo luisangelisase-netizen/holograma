@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Holograma Anime</title>
+<title>Holograma Corrigido</title>
 
 <style>
 body{
@@ -15,74 +15,78 @@ body{
     overflow:hidden;
 }
 
-/* container do holograma */
-.holo{
+/* palco */
+.stage{
     position:relative;
-    width:320px;
-    animation:float 4s ease-in-out infinite;
+    width:400px;
+    height:600px;
+}
+
+/* glow */
+.stage::before{
+    
 }
 
 /* imagem holográfica */
-.holo img{
-    width:100%;
+.stage img{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    right: 100  ;
+    transform:translateX(-50%);
+    height:550px;
+    width:auto;
+
     opacity:0.9;
 
     filter:
         brightness(1.4)
         contrast(1.2)
-        saturate(1.6)
-        drop-shadow(0 0 20px #ff2bd6)
-        drop-shadow(0 0 40px #00f7ff);
-
+        saturate(1.5)
+        drop-shadow(0 0 20px #111111)
+        
+drop-shadow(0 0 40px #131212);
     mix-blend-mode:screen;
+    animation:float 3s ease-in-out infinite;
 }
 
 /* scanlines */
-.holo::before{
-    content:"";
+.scan{
     position:absolute;
     inset:0;
     background:repeating-linear-gradient(
-        transparent 0px,
-        rgba(0,255,255,0.05) 2px,
-        transparent 4px
+        transparent,
+        transparent 3px,
+        rgba(0,255,255,0.05) 4px
     );
-    animation:scan 4s linear infinite;
     pointer-events:none;
 }
 
-/* glow externo */
-.holo::after{
-    content:"";
-    position:absolute;
-    inset:-40px;
-    background:radial-gradient(circle,#ff2bd655,transparent 70%);
-    filter:blur(35px);
-    z-index:-1;
-}
-
-/* animações */
+/* flutuar */
 @keyframes float{
     50%{
-        transform:translateY(-12px);
+        transform:translateX(-50%) translateY(-15px);
     }
 }
-
-@keyframes scan{
-    from{
-        transform:translateY(-100%);
-    }
-    to{
-        transform:translateY(100%);
-    }
+.Nome{
+    text-align: center;
+    align-content:last baseline
 }
 </style>
 </head>
 
 <body>
 
-<div class="holo">
-    <img src="two">
+<div class="stage">
+
+<div class="Nome">
+<h1><p style="color: #eeecec;"><i><strong>cursed blood</strong></i></p></h1>
+</div>
+<br>
+    <img src="curesed2.webp">
+
+    <div class="scan"></div>
+
 </div>
 
 </body>
