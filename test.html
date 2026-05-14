@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Holograma Anime</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle,#050816,#000);
+    overflow:hidden;
+}
+
+/* container do holograma */
+.holo{
+    position:relative;
+    width:320px;
+    animation:float 4s ease-in-out infinite;
+}
+
+/* imagem holográfica */
+.holo img{
+    width:100%;
+    opacity:0.9;
+
+    filter:
+        brightness(1.4)
+        contrast(1.2)
+        saturate(1.6)
+        drop-shadow(0 0 20px #ff2bd6)
+        drop-shadow(0 0 40px #00f7ff);
+
+    mix-blend-mode:screen;
+}
+
+/* scanlines */
+.holo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        transparent 0px,
+        rgba(0,255,255,0.05) 2px,
+        transparent 4px
+    );
+    animation:scan 4s linear infinite;
+    pointer-events:none;
+}
+
+/* glow externo */
+.holo::after{
+    content:"";
+    position:absolute;
+    inset:-40px;
+    background:radial-gradient(circle,#ff2bd655,transparent 70%);
+    filter:blur(35px);
+    z-index:-1;
+}
+
+/* animações */
+@keyframes float{
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes scan{
+    from{
+        transform:translateY(-100%);
+    }
+    to{
+        transform:translateY(100%);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="holo">
+    <img src="two">
+</div>
+
+</body>
+</html>
